@@ -20,13 +20,14 @@ function searchMusic(q) {
 function showResults(data) {
   results.innerHTML = "";
 
-  if (!data.results) {
+  if (!data.results || data.results.length === 0) {
     results.innerHTML = "<p>No songs found</p>";
     return;
   }
 
   data.results.forEach(song => {
     const div = document.createElement("div");
+    div.style.cursor = "pointer";
     div.innerHTML = `
       <img src="${song.album_image}" width="150">
       <h4>${song.name}</h4>
