@@ -7,7 +7,12 @@ const artist = document.getElementById("artist");
 
 search.addEventListener("keyup", () => {
   if (search.value.length > 2) {
-    fetch(`https://api.jamendo.com/v3.0/tracks/?client_id=709fa152&format=json&limit=30&namesearch=${search.value}`)
+    const url = "https://api.allorigins.win/raw?url=" +
+      encodeURIComponent(
+        "https://api.jamendo.com/v3.0/tracks/?client_id=709fa152&format=json&limit=30&namesearch=" + search.value
+      );
+
+    fetch(url)
       .then(res => res.json())
       .then(data => {
         results.innerHTML = "";
